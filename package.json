@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": false,
   "description": "GitHub Action for retrieving deployment information",
-  "main": "dist/index.js",
+  "main": "lib/main.js",
   "scripts": {
     "build": "tsc",
     "format": "prettier --write '**/*.ts'",
