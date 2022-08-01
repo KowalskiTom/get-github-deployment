@@ -1,11 +1,51 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Get Deployment'
+description: 'GitHub Action for retrieving deployment information'
+author: 'KowalskiTom'
 inputs:
-  milliseconds: # change this
+  token:
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+    description: 'GitHub access token'
+  env:
+    required: true
+    description: 'The name of the deployment environment'
+outputs:
+  deployment_url:
+    description: 'The deployment url'
+  deployment_id:
+    description: 'The deployment id'
+  deployment_node_id:
+    description: 'The deployment node id'
+  deployment_sha:
+    description: 'The deployment sha'
+  deployment_ref:
+    description: 'The deployment ref'
+  deployment_task:
+    description: 'The deployment task'
+  deployment_payload:
+    description: 'The deployment payload'
+  deployment_environment:
+    description: 'The deployment environment'
+  deployment_description:
+    description: 'The deployment description'
+  deployment_creator_login:
+    description: 'The deployment creator login'
+  deployment_creator_id:
+    description: 'The deployment creator_id'
+  deployment_created_at:
+    description: 'The deployment created_at'
+  deployment_updated_at:
+    description: 'The deployment updated_at'
+  deployment_statuses_url:
+    description: 'The deployment statuses_url'
+  deployment_repository_url:
+    description: 'The deployment repository_url'
+  deployment_transient_environment:
+    description: 'The deployment transient_environment'
+  deployment_production_environment:
+    description: 'The deployment production_environment'
 runs:
   using: 'node16'
   main: 'dist/index.js'
+branding:
+  icon: 'gift'  
+  color: 'blue'
