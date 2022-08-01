@@ -44,7 +44,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - id: getDeployment
-      - uses: ./
+        uses: ./
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           env: test
