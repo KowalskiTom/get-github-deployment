@@ -1,8 +1,6 @@
 # Get GitHub Deployment
 
-<p align="center">
-  <a href="https://github.com/actions/typescript-action/actions"><img alt="typescript-action status" src="https://github.com/actions/typescript-action/workflows/build-test/badge.svg"></a>
-</p>
+[![build-test](https://github.com/KowalskiTom/get-github-deployment/actions/workflows/test.yml/badge.svg)](https://github.com/KowalskiTom/get-github-deployment/actions/workflows/test.yml)
 
 `get-github-deployment` is a [GitHub Action](https://github.com/features/actions) for retrieving information regarding a specific [GitHub deployment](https://docs.github.com/en/rest/reference/deployments) and outputting for use by other actions. Currently the action supports getting the latest deployment. If you would like to see support for other use cases, please create an issue.
 
