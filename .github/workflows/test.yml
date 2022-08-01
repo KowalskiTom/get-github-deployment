@@ -43,8 +43,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - id: getDeployment
       - uses: ./
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           env: test
-      - run: echo "steps.test-deployment.outputs ${{ steps.test-deployment.outputs.deployment_id }}"
+      - run: echo "steps.getDeployment.outputs ${{ steps.getDeployment.outputs }}"
