@@ -16,6 +16,8 @@ jobs:
       - run: |
           npm run all
   deploy-test:
+    permissions: 
+      deployments: write
     runs-on: ubuntu-latest
     steps:
     - name: Start Test Deployment
@@ -43,9 +45,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - id: getDeployment
+      - name: Get Deployment Info
+        id: getDeployment
         uses: ./
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           env: test
       - run: echo "steps.getDeployment.outputs.deployment_id ${{ steps.getDeployment.outputs.deployment_id }}"
+      - 
