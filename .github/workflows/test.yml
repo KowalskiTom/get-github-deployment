@@ -10,15 +10,45 @@ jobs:
   build: # make sure build/ci work properly
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - run: |
           npm install
       - run: |
           npm run all
-  test: # make sure the action works on a clean machine without building
+  deploy-test:
+    permissions:
+      deployments: write
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: ./
+    - name: Start Test Deployment
+      uses: bobheadxi/deployments@v1.3.0
+      id: test-deployment
+      with:
+        step: start
+        token: ${{ secrets.GITHUB_TOKEN }}
+        env: test
+        payload: '{"env":"test"}'
+    - name: Fake Deployment
+      run: sleep 1s
+      shell: bash      
+    - name: Finish Test Deployment
+      uses: bobheadxi/deployments@v1.3.0
+      if: always()
+      with:
+        step: finish
+        token: ${{ secrets.GITHUB_TOKEN }}
+        status: ${{ job.status }}
+        env: ${{ steps.test-deployment.outputs.env }}
+        deployment_id: ${{ steps.test-deployment.outputs.deployment_id }}  
+  test: # make sure the action works on a clean machine without building
+    needs: [deploy-test]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Get Deployment Info
+        id: getDeployment
+        uses: ./
         with:
-          milliseconds: 1000
+          token: ${{ secrets.GITHUB_TOKEN }}
+          env: test
+      - run: echo "steps.getDeployment.outputs.deployment_id ${{ steps.getDeployment.outputs.deployment_id }}"
