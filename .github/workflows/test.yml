@@ -48,4 +48,4 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           env: test
-      - run: echo "steps.getDeployment.outputs ${{ steps.getDeployment.outputs }}"
+      - run: echo "steps.getDeployment.outputs.deployment_id ${{ steps.getDeployment.outputs.deployment_id }}"
