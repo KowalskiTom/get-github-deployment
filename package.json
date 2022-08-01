@@ -1,9 +1,9 @@
 {
-  "name": "typescript-action",
-  "version": "0.0.0",
-  "private": true,
-  "description": "TypeScript template action",
-  "main": "lib/main.js",
+  "name": "get-github-deployment",
+  "version": "0.1.0",
+  "private": false,
+  "description": "GitHub Action for retrieving deployment information",
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
     "format": "prettier --write '**/*.ts'",
@@ -15,17 +15,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/typescript-action.git"
+    "url": "git+https://github.com/KowalskiTom/get-github-deployment.git"
   },
   "keywords": [
     "actions",
-    "node",
-    "setup"
+    "deployment"
   ],
-  "author": "",
+  "author": "KowalskiTom",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.6.0"
+    "@actions/core": "^1.6.0",
+    "@actions/github": "^5.0.3"
   },
   "devDependencies": {
     "@types/node": "^16.10.5",
