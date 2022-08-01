@@ -12,8 +12,13 @@ async function run(): Promise<void> {
       ...context.repo,
       env
     })
+    // eslint-disable-next-line no-console
+    console.log('got here')
 
     const deployments = request.data
+
+    // eslint-disable-next-line no-console
+    console.log('deployments object', JSON.stringify(deployments))
 
     if (deployments.length > 0) {
       // eslint-disable-next-line no-console
