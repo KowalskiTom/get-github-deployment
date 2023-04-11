@@ -5,12 +5,12 @@ async function run(): Promise<void> {
   try {
     const token = core.getInput('token')
     const octokit = github.getOctokit(token)
-    const env = core.getInput('env')
+    const environment = core.getInput('env')
     const context = github.context
 
     const request = await octokit.rest.repos.listDeployments({
       ...context.repo,
-      env
+      environment
     })
 
     const deployments = request.data
