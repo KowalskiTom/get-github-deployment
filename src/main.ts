@@ -18,6 +18,9 @@ async function run(): Promise<void> {
     if (deployments.length > 0) {
       const deploymentObject = JSON.stringify(deployments, null, 4)
       // eslint-disable-next-line no-console
+      console.log(`DEBUG1`)
+
+      // eslint-disable-next-line no-console
       console.log(`Deployments: ${deploymentObject}`)
 
       core.setOutput('deployment_url', deployments[0].url.toString())

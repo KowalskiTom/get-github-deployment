@@ -46,12 +46,14 @@ function run() {
         try {
             const token = core.getInput('token');
             const octokit = github.getOctokit(token);
-            const env = core.getInput('env');
+            const environment = core.getInput('env');
             const context = github.context;
-            const request = yield octokit.rest.repos.listDeployments(Object.assign(Object.assign({}, context.repo), { env }));
+            const request = yield octokit.rest.repos.listDeployments(Object.assign(Object.assign({}, context.repo), { environment }));
             const deployments = request.data;
             if (deployments.length > 0) {
                 const deploymentObject = JSON.stringify(deployments, null, 4);
+                // eslint-disable-next-line no-console
+                console.log(`DEBUG1`);
                 // eslint-disable-next-line no-console
                 console.log(`Deployments: ${deploymentObject}`);
                 core.setOutput('deployment_url', deployments[0].url.toString());
