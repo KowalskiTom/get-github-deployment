@@ -16,6 +16,10 @@ async function run(): Promise<void> {
     const deployments = request.data
 
     if (deployments.length > 0) {
+      const deploymentObject = JSON.stringify(deployments, null, 4)
+      // eslint-disable-next-line no-console
+      console.log(`Deployments: ${deploymentObject}`)
+
       core.setOutput('deployment_url', deployments[0].url.toString())
       core.setOutput('deployment_id', deployments[0].id.toString())
       core.setOutput('deployment_node_id', deployments[0].node_id.toString())
